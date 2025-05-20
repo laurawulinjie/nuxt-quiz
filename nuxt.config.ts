@@ -7,6 +7,9 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "pinia-plugin-persistedstate/nuxt",
   ],
+  app: {
+    baseUrl: "/nuxt-quiz/",
+  },
   routeRules: {
     "/**": { ssr: false },
   },
