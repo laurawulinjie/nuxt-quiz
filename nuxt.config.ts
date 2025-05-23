@@ -8,9 +8,11 @@ export default defineNuxtConfig({
     "pinia-plugin-persistedstate/nuxt",
   ],
   app: {
-    baseUrl: "/nuxt-quiz/",
+    baseURL: "/nuxt-quiz/",
   },
-  routeRules: {
-    "/**": { ssr: false },
+  nitro: {
+    prerender: {
+      routes: ["/", "/quiz", "/result"],
+    },
   },
 });

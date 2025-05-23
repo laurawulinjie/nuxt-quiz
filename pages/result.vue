@@ -3,7 +3,7 @@
     class="min-h-screen flex flex-col items-center justify-center bg-white text-gray-800 p-8 space-y-6"
   >
     <h1 class="text-3xl font-bold">🎉 Quiz Completed!</h1>
-    <p class="text-xl">
+    <p v-if="quizStore.questions.length" class="text-xl">
       You scored <strong>{{ quizStore.score }}</strong> out of
       <strong>{{ quizStore.questions.length }}</strong>
     </p>

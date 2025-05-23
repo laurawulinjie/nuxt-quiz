@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import questionsJson from "~/assets/questions.json";
 import type { Question, QuestionType } from "~/types/quiz";
 
 function shuffleAnswers(q: Question): Question {
@@ -12,12 +11,7 @@ function shuffleAnswers(q: Question): Question {
 export const useQuizStore = defineStore(
   "quiz",
   () => {
-    const questions = ref<Question[]>(
-      questionsJson.map((q) =>
-        shuffleAnswers({ ...q, type: q.type as QuestionType })
-      )
-    );
-
+    const questions = ref<Question[]>([]);
     const currentIndex = ref(0);
     const score = ref(0);
     const answersGiven = ref<boolean[]>([]);
@@ -36,14 +30,22 @@ export const useQuizStore = defineStore(
       if (!isFinished.value) currentIndex.value++;
     }
 
-    function resetQuiz() {
-      questions.value = questionsJson.map((q) =>
-        shuffleAnswers({ ...q, type: q.type as QuestionType })
-      );
-
-      currentIndex.value = 0;
-      score.value = 0;
-      answersGiven.value = [];
+    async function resetQuiz() {
+      if (import.meta.client) {
+        const { data } = await useFetch<Question[]>(
+          "/nuxt-quiz/questions.json"
+        );
+        if (data.value) {
+          questions.value = data.value.map((q) =>
+            shuffleAnswers({ ...q, type: q.type as QuestionType })
+          );
+          currentIndex.value = 0;
+          score.value = 0;
+          answersGiven.value = [];
+        } else {
+          console.error("❌ Failed to load questions.");
+        }
+      }
     }
 
     return {

@@ -1,57 +1,60 @@
 <template>
   <div class="max-w-xl mx-auto bg-white rounded-2xl shadow-lg p-6 space-y-4">
-    <h2 class="text-xl font-semibold text-gray-800 mb-2">
-      {{ question.question }}
-    </h2>
+    <div v-if="question">
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">
+        {{ question.question }}
+      </h2>
 
-    <form class="space-y-2" @submit.prevent="submitAnswer">
-      <div
-        v-for="(answer, index) in question.answers"
-        :key="index"
-        class="flex items-start space-x-2 p-2 rounded-lg transition-all duration-150"
-        :class="answerFeedbackClass(answer)"
-      >
-        <input
-          :id="`answer-${question.id}-${index}`"
-          :type="question.type === 'multiple' ? 'checkbox' : 'radio'"
-          :name="'answer-' + question.id"
-          :value="answer.text"
-          v-model="userSelection"
-          :disabled="submitted"
-          class="mt-1"
-        />
-        <label
-          class="text-gray-800 cursor-pointer"
-          :for="`answer-${question.id}-${index}`"
+      <form class="space-y-2" @submit.prevent="submitAnswer">
+        <div
+          v-for="(answer, index) in question.answers"
+          :key="index"
+          class="flex items-start space-x-2 p-2 rounded-lg transition-all duration-150"
+          :class="answerFeedbackClass(answer)"
         >
-          {{ answer.text }}
-        </label>
+          <input
+            :id="`answer-${question.id}-${index}`"
+            :type="question.type === 'multiple' ? 'checkbox' : 'radio'"
+            :name="'answer-' + question.id"
+            :value="answer.text"
+            v-model="userSelection"
+            :disabled="submitted"
+            class="mt-1"
+          />
+          <label
+            class="text-gray-800 cursor-pointer"
+            :for="`answer-${question.id}-${index}`"
+          >
+            {{ answer.text }}
+          </label>
+        </div>
+
+        <div class="flex flex-wrap gap-3 pt-4">
+          <button
+            type="submit"
+            :disabled="submitted || !canSubmit"
+            class="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 disabled:bg-blue-300"
+          >
+            Submit
+          </button>
+
+          <button
+            type="button"
+            @click="$emit('next')"
+            :disabled="!submitted"
+            class="px-4 py-2 rounded bg-gray-500 text-white hover:bg-gray-600 disabled:bg-gray-200"
+          >
+            Next Question
+          </button>
+        </div>
+      </form>
+
+      <div v-if="submitted" class="text-sm text-gray-600 mt-2">
+        <span v-if="isCorrect">✅ Correct!</span>
+        <span v-else>❌ Your answer is not quite right</span>
       </div>
-
-      <div class="flex flex-wrap gap-3 pt-4">
-        <button
-          type="submit"
-          :disabled="submitted || !canSubmit"
-          class="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 disabled:bg-blue-300"
-        >
-          Submit
-        </button>
-
-        <button
-          type="button"
-          @click="$emit('next')"
-          :disabled="!submitted"
-          class="px-4 py-2 rounded bg-gray-500 text-white hover:bg-gray-600 disabled:bg-gray-200"
-        >
-          Next Question
-        </button>
-      </div>
-    </form>
-
-    <div v-if="submitted" class="text-sm text-gray-600 mt-2">
-      <span v-if="isCorrect">✅ Correct!</span>
-      <span v-else>❌ Your answser is not quite right</span>
     </div>
+    <div v-else>Loading Questions...</div>
   </div>
 </template>
 
