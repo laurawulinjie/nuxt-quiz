@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "question": "What is the capital of France?",
+    "type": "single",
+    "answers": [
+      { "text": "Paris", "isCorrect": true },
+      { "text": "London", "isCorrect": false },
+      { "text": "Berlin", "isCorrect": false },
+      { "text": "Madrid", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Which of these are programming languages?",
+    "type": "multiple",
+    "answers": [
+      { "text": "Python", "isCorrect": true },
+      { "text": "HTML", "isCorrect": false },
+      { "text": "CSS", "isCorrect": false },
+      { "text": "JavaScript", "isCorrect": true }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Which planet is known as the Red Planet?",
+    "type": "single",
+    "answers": [
+      { "text": "Venus", "isCorrect": false },
+      { "text": "Mars", "isCorrect": true },
+      { "text": "Jupiter", "isCorrect": false },
+      { "text": "Saturn", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "Which of the following are programming paradigms?",
+    "type": "multiple",
+    "answers": [
+      { "text": "Object-Oriented", "isCorrect": true },
+      { "text": "Functional", "isCorrect": true },
+      { "text": "Relational", "isCorrect": false },
+      { "text": "Procedural", "isCorrect": true }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "What is the boiling point of water at sea level?",
+    "type": "single",
+    "answers": [
+      { "text": "100°C", "isCorrect": true },
+      { "text": "0°C", "isCorrect": false },
+      { "text": "50°C", "isCorrect": false },
+      { "text": "212°C", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Which of the following are types of clouds?",
+    "type": "multiple",
+    "answers": [
+      { "text": "Cumulus", "isCorrect": true },
+      { "text": "Stratus", "isCorrect": true },
+      { "text": "Cirrus", "isCorrect": true },
+      { "text": "Nimbow", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Which country hosted the 2020 Summer Olympics (held in 2021)?",
+    "type": "single",
+    "answers": [
+      { "text": "China", "isCorrect": false },
+      { "text": "Brazil", "isCorrect": false },
+      { "text": "Japan", "isCorrect": true },
+      { "text": "Germany", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "Which of the following are JavaScript frameworks or libraries?",
+    "type": "multiple",
+    "answers": [
+      { "text": "React", "isCorrect": true },
+      { "text": "Vue", "isCorrect": true },
+      { "text": "Laravel", "isCorrect": false },
+      { "text": "Angular", "isCorrect": true }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "What does HTML stand for?",
+    "type": "single",
+    "answers": [
+      { "text": "HyperText Markup Language", "isCorrect": true },
+      { "text": "Hyper Transfer Machine Language", "isCorrect": false },
+      { "text": "HighText Machine Language", "isCorrect": false },
+      { "text": "Hyper Markup Machine Language", "isCorrect": false }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Which of the following animals are mammals?",
+    "type": "multiple",
+    "answers": [
+      { "text": "Dolphin", "isCorrect": true },
+      { "text": "Shark", "isCorrect": false },
+      { "text": "Bat", "isCorrect": true },
+      { "text": "Penguin", "isCorrect": false }
+    ]
+  }
+]
