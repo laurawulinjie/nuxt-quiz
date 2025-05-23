@@ -44,7 +44,7 @@
             :disabled="!submitted"
             class="px-4 py-2 rounded bg-gray-500 text-white hover:bg-gray-600 disabled:bg-gray-200"
           >
-            Next Question
+            {{ props.isLastQuestion ? "View Score" : "Next Question" }}
           </button>
         </div>
       </form>
@@ -64,6 +64,7 @@ import type { Question, Answer } from "~/types/quiz";
 
 const props = defineProps<{
   question: Question;
+  isLastQuestion?: boolean;
 }>();
 
 const emit = defineEmits<{
